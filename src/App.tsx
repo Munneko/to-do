@@ -1,31 +1,24 @@
-import React, { useState } from "react";
 import List from "./components/List/List";
 import Add from "./components/Add/Add";
-import type { ItemProps } from "./components/Item/Item";
 import styles from "./style/App.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "./redux/store";
+import { addTodo, deleteTodo, toggleTodo } from "./redux/slices/todoSlice";
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<ItemProps[]>([
-    {
-      text: "Перша задача",
-      completed: false,
-      createdAt: new Date().toISOString(),
-    },
-  ]);
+  const todos = useSelector((state: RootState) => state.todo.todos);
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleAdd = (text: string) => {
-    setTodos([
-      ...todos,
-      {
-        text,
-        completed: false,
-        createdAt: new Date().toISOString(),
-      },
-    ]);
+    dispatch(addTodo(text));
   };
 
-  const handleDelete = (index: number) => {
-    setTodos((todos) => todos.filter((_, idx) => idx !== index));
+  const handleDelete = (id: string) => {
+    dispatch(deleteTodo(id));
+  };
+
+  const handleToggle = (id: string) => {
+    dispatch(toggleTodo(id));
   };
 
   return (
@@ -33,7 +26,7 @@ const App: React.FC = () => {
       <div className={styles.appContainer}>
         <h1>To-Do List</h1>
         <Add onAdd={handleAdd} />
-        <List todos={todos} onDelete={handleDelete} />
+        <List todos={todos} onDelete={handleDelete} onToggle={handleToggle} />
       </div>
     </div>
   );

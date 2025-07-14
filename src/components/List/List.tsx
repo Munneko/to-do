@@ -5,14 +5,20 @@ import styles from "./List.module.css";
 
 export interface ListProps {
   todos: ItemProps[];
-  onDelete: (index: number) => void;
+  onDelete: (id: string) => void;
+  onToggle: (id: string) => void;
 }
 
-const List: React.FC<ListProps> = ({ todos, onDelete }) => (
+const List: React.FC<ListProps> = ({ todos, onDelete, onToggle }) => (
   <div className={styles.todoList}>
     {todos.length === 0 && <p className={styles.empty}>Немає задач</p>}
-    {todos.map((todo, idx) => (
-      <Item key={idx} {...todo} onDelete={() => onDelete(idx)} />
+    {todos.map((todo) => (
+      <Item
+        key={todo.id}
+        {...todo}
+        onDelete={() => onDelete(todo.id)}
+        onToggle={() => onToggle(todo.id)}
+      />
     ))}
   </div>
 );
