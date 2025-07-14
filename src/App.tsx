@@ -4,6 +4,7 @@ import styles from "./style/App.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "./redux/store";
 import { addTodo, deleteTodo, toggleTodo } from "./redux/slices/todoSlice";
+import { useEffect } from "react";
 
 const App: React.FC = () => {
   const todos = useSelector((state: RootState) => state.todo.todos);
@@ -20,6 +21,10 @@ const App: React.FC = () => {
   const handleToggle = (id: string) => {
     dispatch(toggleTodo(id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className={styles.wrapper}>
