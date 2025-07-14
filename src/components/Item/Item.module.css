@@ -2,36 +2,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e7ff;
+  transition: background 0.2s;
+}
+
+.Item:last-child {
+  border-bottom: none;
 }
 
 .completed span:first-child {
   text-decoration: line-through;
-  color: #aaa;
+  color: #a0aec0;
 }
 
 .Date {
   display: block;
-  font-size: 0.8em;
-  color: #888;
+  font-size: 0.85em;
+  color: #94a3b8;
   margin-top: 2px;
-}
-
-.deleteBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  outline: none;
-}
-.deleteBtn:focus {
-  outline: none;
-  box-shadow: none;
-}
-.deleteBtn:active {
-  outline: none;
-  box-shadow: none;
 }
 
 .checkboxBtn {
@@ -40,12 +29,31 @@
   cursor: pointer;
   padding: 0;
   outline: none;
+  margin-right: 8px;
+  transition: background 0.2s;
+  border-radius: 50%;
 }
-.checkboxBtn:focus {
-  outline: none;
-  box-shadow: none;
-}
+
+.checkboxBtn:focus,
 .checkboxBtn:active {
   outline: none;
-  box-shadow: none;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.deleteBtn:hover {
+  background: #e74c3c;
+}
+
+.deleteBtn:hover svg {
+  color: #fff;
 }

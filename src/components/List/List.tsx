@@ -2,6 +2,7 @@ import React from "react";
 import Item from "../Item/Item";
 import type { ItemProps } from "../Item/Item";
 import styles from "./List.module.css";
+import { Inbox } from "lucide-react";
 
 export interface ListProps {
   todos: ItemProps[];
@@ -11,7 +12,12 @@ export interface ListProps {
 
 const List: React.FC<ListProps> = ({ todos, onDelete, onToggle }) => (
   <div className={styles.todoList}>
-    {todos.length === 0 && <p className={styles.empty}>Немає задач</p>}
+    {todos.length === 0 && (
+      <div className={styles.empty}>
+        <Inbox size={32} style={{ opacity: 0.4, marginBottom: 8 }} />
+        <div>У вас ще немає жодної задачі</div>
+      </div>
+    )}
     {todos.map((todo) => (
       <Item
         key={todo.id}

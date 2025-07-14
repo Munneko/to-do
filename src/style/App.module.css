@@ -1,10 +1,8 @@
-:global(html),
-:global(body),
-:global(#root) {
+:global(html), :global(body), :global(#root) {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #f5f6fa;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f5f6fa 100%);
 }
 
 .wrapper {
@@ -16,17 +14,23 @@
 
 .appContainer {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   min-height: 350px;
   margin: 0;
-  padding: 40px 32px 32px 32px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px 24px 32px 24px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: box-shadow 0.3s;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 32px;
-  font-size: 2.8rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #22223b;
+  letter-spacing: 1px;
 }
